@@ -1,0 +1,181 @@
+# Configuration for Enchanter
+#  Change commands how to access it in top of config.yml
+
+# set to "none" to disable
+open-sound: "ENDERDRAGON_WINGS"
+# In what worlds enchanter is disabled
+disabled-in-worlds:
+  - "bad_world"
+messages:
+  sound: ENTITY_PLAYER_LEVELUP
+right-click-to-view-enchants: true
+go-back-item:
+  enabled: true
+  item:
+    type: NETHER_STAR
+    id: 0
+    custom-model-data: 0
+  name: "&c&l返回"
+  lore: [ ]
+# Should enchanter stay open after item is bought?
+keep-open: true
+# Enchanter inventory size
+# 9-18-27-36-45-54
+#
+# 可用变量:
+#  %group-enchant-count% - number of enchants in the group
+#  %price% - 价格
+#  %left% - remaining needed exp until player can purchase item
+# 可用货币类型:
+# exp, money, level, souls (works with items that are held when opening inventory), diamonds, gold (gold ingots), emeralds
+inventory:
+  size: 18
+  name: "&7附魔商店"
+  settings:
+    # 附魔商店应该给出哪些品质的附魔书?
+    # "ALL" - 给出所有品质
+    # <数字> - 给出指定的附魔品质
+    enchanterBookLevel: "ALL"
+  items:
+    0-18:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 7
+        custom-model-data: 0
+        force-glow: false
+      name: " "
+      lore: [ ]
+    2:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 0
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: SIMPLE
+      price: exp:400
+      sound: BLOCK_ANVIL_LAND
+      name: '&f&l普通附魔 &7(点击打开)'
+      lore:
+      - '&7获取一本随机的'
+      - '&f普通&7品质附魔书'
+      - ''
+      - '&b&l花费 &f%price% 经验值 &7(还需 %left%)'
+    3:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 5
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: UNIQUE
+      sound: BLOCK_ANVIL_LAND
+      price: exp:800
+      name: '&a&l稀有附魔 &7(点击打开)'
+      lore:
+      - '&7获取一本随机的'
+      - '&a稀有&7品质附魔书'
+      - ''
+      - '&b&l花费 &f%price% 经验值 &7(还需 %left%)'
+    4:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 3
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: ELITE
+      price: exp:2500
+      sound: BLOCK_ANVIL_LAND
+      name: '&b&l高级附魔 &7(点击打开)'
+      lore:
+      - '&7获取一本随机的'
+      - '&b高级&7品质附魔书'
+      - ''
+      - '&b&l花费 &f%price% 经验值 &7(还需 %left%)'
+    5:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 4
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: ULTIMATE
+      price: exp:5000
+      sound: BLOCK_ANVIL_LAND
+      name: '&d&l史诗附魔 &7(点击打开)'
+      lore:
+      - '&7获取一本随机的'
+      - '&d史诗&7品质附魔书'
+      - ''
+      - '&b&l花费 &f%price% 经验值 &7(还需 %left%)'
+    6:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 1
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: LEGENDARY
+      price: exp:25000
+      sound: BLOCK_ANVIL_LAND
+      name: '&6&l神话附魔 &7(点击打开)'
+      lore:
+      - '&7获取一本随机的'
+      - '&6神话&7品质附魔书'
+      - ''
+      - '&b&l花费 &f%price% 经验值 &7(还需 %left%)'
+    13:
+      item:
+        type: STAINED_GLASS_PANE
+        id: 6
+        custom-model-data: 0
+        force-glow: false
+      enchant-group: FABLED
+      price: exp:40000
+      sound: BLOCK_ANVIL_LAND
+      name: '&6&l神话附魔 &7(点击打开)'
+      lore:
+      - '&7获取一本随机的'
+      - '&6神话&7品质附魔书'
+      - ''
+      - '&b&l花费 &f%price% 经验值 &7(还需 %left%)'
+    9:
+      item:
+        type: ANVIL
+        id: 0
+        custom-model-data: 0
+        force-glow: false
+      sound: BLOCK_ANVIL_USE
+      player-command:
+        - "tinkerer"
+      name: '&b&l修补工匠 &7(点击打开)'
+      lore:
+      - '&7为魔法尘埃和经验值修补书本'
+      - '&b&l点击此处查看'
+    17:
+      item:
+        type: ENDER_PORTAL_FRAME
+        id: 0
+        custom-model-data: 0
+        force-glow: false
+      sound: ENTITY_ARROW_HIT
+      player-command:
+        - "alchemist"
+      name: '&f炼金术士 &7(点击打开)'
+      lore:
+      - '&7融合附魔书和魔法尘埃'
+      - '&b&l点击此处查看'
+
+# Confirmation inventory for enchanter payments
+# Confirm or deny the transaction, acts like 2-step confirmation
+confirmation-inventory:
+  enabled: true
+  name: "&a附魔书交易"
+  accept:
+    material: STAINED_GLASS_PANE
+    damage: 5
+    name: '&a接受交易'
+    lore:
+    - '&7点击支付 %price% %paymentType%'
+  cancel:
+    material: STAINED_GLASS_PANE
+    damage: 14
+    name: '&c取消交易'
+    lore:
+    - '&7点击取消本次交易'

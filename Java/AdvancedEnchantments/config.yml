@@ -1,0 +1,729 @@
+# AdvancedEnchantments
+# Made by AdvancedPlugins.net
+# 配置文件版本: 9.9.16
+# 发布时间: 20/07/2024
+
+# ** 指令和权限
+# /enchanter - 打开附魔商店; 无权限
+# /tinkerer - 打开附魔交易; 无权限
+# /gkits - 打开 GKits; 无权限
+# /ae - 插件的主要指令; 权限 ae.help
+# /ae about - 关于当前构建的信息; 无权限
+# /ae list - 列出所有的自定义附魔; 权限 ae.list
+# /ae admin - 打开一个包含所有可能附魔的菜单 (100% 成功率); 权限 ae.admin
+# /ae giveitem <玩家名> <物品> - 给出各种插件物品; 权限 ae.giveitem
+# /ae give <玩家名> <附魔> <等级> - 给予玩家一个自定义附魔书; 权限 ae.give
+# /ae info <附魔> - 有关自定义附魔的信息; 权限 ae.info
+# /ae reload - 重载所有配置文件; 权限 ae.reload
+# /ae enchant <附魔> <等级> - 附魔物品; 权限 ae.enchant
+# /ae givebook <玩家名> <附魔> <等级> <计数> <成功率> <破碎率> - 给予玩家一个有特定几率的附魔书; 权限 ae.givebook
+# /ae givercbook <类型> <玩家名> <数量> - 给予玩家一个可以右键的附魔书; 权限 ae.givercbook
+# /ae giverandombook <玩家名> <组别> - 给予玩家一个指定品质的随机附魔书; 权限 ae.giverandombook
+# /ae pasteenchants - 粘贴格式化的附魔列表; 权限 ae.admin
+# /alchemist - 打开炼金术士; 无权限
+# /ae givegkit <玩家名称> <gkit> - 给予玩家 gkit 物品; 权限 ae.givegkit
+
+# /aegive - 给予玩家 gkit 物品; 权限 ae.give
+# 例如: /aegive GC diamond_helmet 1 name:&&7cItem_name protection:5 glowing:1 lore:&&7cLore_line_#1|&&7cSecond_Line
+
+# /asets - 高级护甲套装指令; 权限 asets.admin
+
+# 有一些可配置的设置已注释好，其他设置应该是不解释也能知道的
+# 加入discord以寻求帮助或提出问题: https://advancedplugins.net/discord
+
+# 更改默认消息语言。您可以修改AdvancedEnchantments的'locale'文件夹中的所有信息
+# 在此处查看所有默认语言和其他信息: https://ae.advancedplugins.net/general-information/languages
+language: zh-cn
+
+# 管理插件命令
+commands:
+  advancedenchantments:
+    # "没有权限" 的提示是否在玩家没有 "ae.help" 权限的时候显示
+    permissionMessageEnabled: true
+  enchanter:
+    # 指令是否启用?
+    enabled: true
+    # 打开附魔商店Enchanter的主要指令
+    command: /enchanter
+    # 指令缩写列表
+    aliases:
+    - e
+    - ce
+  tinkerer:
+    enabled: true
+    command: /tinkerer
+    aliases:
+    - tinker
+  alchemist:
+    enabled: true
+    command: /alchemist
+    aliases:
+    - alchem
+  withdrawsouls:
+    enabled: true
+    command: /withdrawsouls
+    aliases:
+    - wsouls
+  apply: # 重新应用当前穿戴的盔甲效果，同时重复效果
+    enabled: true
+    command: /apply
+    aliases:
+    - reapply
+
+permissions:
+  enchanter:
+    enabled: false
+    perm: ae.enchanter
+  tinkerer:
+    enabled: false
+    perm: ae.tinkerer
+  gkits:
+    enabled: false
+    perm: ae.gkits
+  alchemist:
+    enabled: false
+    perm: ae.alchemist
+
+disable-enchants:
+  # 禁用特定世界中的附魔
+  test_world: # 世界名
+    - test_enchant
+
+# Only disables armorsets events
+disable-armorsets:
+  # Disable armorsets in specific world
+  test_world: # world name
+    - test_enchant
+
+souls:
+  enabled: true
+  lore: '&c收集的灵魂: %souls%'
+  item:
+    type: PAPER
+    id: 0
+    custom-model-data: 0
+    name: '&f&l灵魂追踪器'
+    lore:
+    - '&7应用在武器上'
+    - '&7从击杀中收集灵魂'
+
+# 附魔限制
+# 如果一个物品包含指定的lore或者指定的nbt标签
+# 则无法应用自定义附魔
+enchantLimitation:
+  enabled: true
+  lore: '&c&l不可附魔'
+  NBT-tag: unmodifiable
+
+# 附魔组合（升级）物品
+# 示例: https://media.giphy.com/media/26n6QDunj6iC3Z6Zq/giphy.gif
+combining:
+  enabled: true
+  chances:
+    # 如果设置为 true, 成功几率和破碎几率将会影响组合
+    use-chances: true
+    # 如果设置为 true, 物品将会破碎 (如果 Protection is added, protection will be removed).
+    break-item: false
+    # 如果物品上已经有了更高级别的附魔，附魔应该升级吗？
+    upgrade: true
+
+# 附魔物品的限制
+slots:
+  enabled: true
+  # 最大附魔数
+  max: 9
+  # 使用附魔槽位增加器的最大附魔槽位增加量
+  # 这是升级后可以使用的插槽总数
+  max-increase-of-slots: 13
+  # 是否在lore中展示？
+  display-in-lore: false
+  display: '&e附魔槽位&7: %left%'
+
+# Applying enchantment book section
+# Miscellaneous settings for applying
+# enchantment books to items (dragging book to item).
+applying:
+  cosmetics:
+    applied:
+      particle: HAPPY_VILLAGER
+      sound: ENTITY_PLAYER_LEVELUP
+    failed:
+      particle: LAVA_POP
+      sound: BLOCK_ANVIL_BREAK
+
+# Enchantment Book section
+# This item is used to get random enchantment book
+# from a group of enchantments.
+# - Can be purchased in the enchanter menu (/enchanter).
+enchanter-books:
+  firework-on-open: true
+  cosmetics:
+    particle: HAPPY_VILLAGER
+    sound: ENTITY_PLAYER_LEVELUP
+  # 是否在右键单击附魔书显示消息
+  display-right-click-message: true
+  type: BOOK
+  id: 0
+  custom-model-data: 0
+  force-glow: false
+  name: '%group-color%&l%group-name%&l附魔书 &7(点击打开)'
+  lore:
+  - '&7点击购买一本随机品质的'
+  - '%group-color%%group-name%&7附魔书'
+
+# Custom Items section
+# Configure the items of AdvancedEnchantments
+# such as the Black Scroll, Secret Dust, etc.
+items:
+  settings:
+    # 此列表下面列出的管理项仅适用于此列表中的材料
+    can-apply-to:
+    - ALL_SWORD
+    - ALL_ARMOR
+    - ALL_PICKAXE
+    - ALL_AXE
+    - ALL_SPADE
+    - ALL_HOE
+    - ALL_EDIBLE
+    - BOOK
+    - BOW
+    - CROSSBOW
+    - SKULL_ITEM
+    - PLAYER_HEAD
+    - ELYTRA
+    - TRIDENT
+  transmogscroll:
+    type: PAPER
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&c&l变形卷轴'
+    lore:
+    - '&7通过物品 &e&n稀有度&7 进行附魔'
+    - '&7并在名字中增加数量'
+    - ''
+    - '&e&o将卷轴放在你要使用的物品上'
+    enchants-count-formatting: '&d[&b&n%count%&d]'
+  soulgem:
+    type: EMERALD
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&c&l灵魂宝石 &7[&a%count%&7]'
+    lore:
+    - '&7将宝石放在你要添加灵魂的物品上.'
+  itemnametag:
+    type: NAME_TAG
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&6&l物品命名 &7(点击打开)'
+    lore:
+    - '&7重命名你的装备'
+    messages:
+      success:
+      - '&a&l(!) &a你已成功将物品重命名为 &e%name%'
+      activated:
+      - '&a&l(!) &a你在聊天栏发送的下一条消息将作为物品的新名字重命名你手中的物品'
+      air:
+      - '&c&l(!) &c你需要手持一个物品才能这么做'
+      renaming-not-enchanted-item:
+      - '&c&l(!) &c你只能重命名附魔过的物品'
+    settings:
+      # 是否允许使用颜色
+      colors: true
+      # 是否允许使用魔法颜色代码 (&k, &m, &o, &r, &l)
+      magic: false
+      # 名字中不能使用的词语. 该功能使用正则表达式, 并非精确匹配
+      # 你可以在此处学习正则表达式的使用: https://www.rexegg.com/regex-quickstart.html
+      word-blacklist:
+      - fuck
+      - dick
+      - bitch
+  randomization-scroll:
+    type: PAPER
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '%group-color%%group-name%&l%group-color% 随机卷轴'
+    lore:
+    - ''
+    - '&7适用于 %group-color%%group-name% &7附魔书'
+    - '&7刷新附魔书的成功率和破碎率'
+    - ''
+    - '&7将卷轴拖到附魔书上'
+  black-scroll:
+    type: INK_SACK
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&f&l暗黑卷轴'
+    lore:
+    - '&7从物品中随机提取一个附魔'
+    - '&7转化成一本%success%%成功率的附魔书'
+    - ''
+    - '&f将卷轴拖到要提取的物品上'
+    success: 95
+    destroy: 5
+    random: true
+  secret-dust:
+    type: FIREBALL
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '%group-color%%group-name%%group-color% 未知尘埃 &7(点击打开)'
+    lore:
+    - '&7包含: &b魔法, &f神秘 &7尘埃.'
+    - '&7里面混杂着一些不可名状物'
+  mystery-dust:
+    type: SULPHUR
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&f神秘尘埃'
+    lore:
+    - '&7某种合成魔法尘埃失败的奇特产物'
+  magic-dust:
+    type: SUGAR
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '%group-color%%group-name%%group-color% 魔法尘埃'
+    lore:
+    - '&a+%percent%% 成功率'
+    - '&7适用于 %group-color%%group-name% &7附魔书'
+    - '&7能够将成功率提高 %group-color%%percent%%'
+    messages:
+      cannotApplyToStacked: '&c&l(!) &c无法使用于堆叠在背包中的书本'
+  slot-increaser:
+    type: EYE_OF_ENDER
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '%group-color%&l%group-name% 附魔槽位球'
+    lore:
+    - '&7能够增加 &a+%count% 个最大附魔槽位数量'
+    messages:
+      success:
+      - '&a&l(!) &a你已成功将物品的附魔槽位最大数量增加到 %count% !'
+  blocktrak:
+    type: SLIME_BALL
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&a方块破坏计数器'
+    lore:
+    - '&7几率你用一个工具破坏了多少方块'
+    - '&7将方块破坏计数器拖到要安装的工具上安装'
+    messages:
+      success:
+      - '&7你已成功为工具安装 &a方块破坏计数器'
+    settings:
+      lore-display: '&e方块破坏: &6%stats%'
+  fishtrak:
+    type: FIREWORK_STAR
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&b钓鱼计数器'
+    lore:
+    - '&7记录你使用鱼竿钓到鱼的数量'
+    - '&7将钓鱼计数器拖到要安装的鱼竿上安装'
+    messages:
+      success:
+      - '&7你已成功为鱼竿安装 &b钓鱼计数器'
+    settings:
+      lore-display: '&e钓鱼计数: &6%stats%'
+  stattrak:
+    type: MAGMA_CREAM
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&e玩家击杀计数器'
+    lore:
+    - '&7记录你用一个武器击杀了多少玩家'
+    - '&7将玩家击杀计数器拖到要安装的武器上安装'
+    messages:
+      success:
+      - '&7你已成功为武器安装 &e玩家击杀计数器'
+    settings:
+      lore-display: '&e玩家击杀: &6%stats%'
+  mobtrak:
+    type: SLIME_BALL
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&3怪物击杀计数器'
+    lore:
+    - '&7记录你用一个武器击杀了多少怪物'
+    - '&7将怪物击杀计数器拖到要安装的武器上安装'
+    messages:
+      success:
+      - '&7你已成功为武器安装 &3怪物击杀计数器'
+    settings:
+      lore-display: '&3怪物击杀: &f%stats%'
+  holywhitescroll:
+    type: PAPER
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&6&l神圣卷轴'
+    lore:
+    - '&e传说中的神圣卷轴'
+    - '&e适用于护甲与武器'
+    - '&e在死亡时可百分百'
+    - '&e不丢失受祝福物品'
+    messages:
+      applied:
+      - '&7你已成功使用了 &6&l神圣卷轴'
+    settings:
+      lore-display: '&e&l*&f&l神圣&e&l* &f&l受保护中'
+      # 死亡后是否依然保持神圣卷轴装备在物品上
+      keep-after-death: false
+  # Orbs allow applying x number of enchants
+  orb:
+    lore: '&a%max% Enchantment Slots &7(Orb [&a+%increased%&7])'
+    weapon:
+      material: EYE_OF_ENDER
+      custom-model-data: 0
+      force-glow: false
+      name: '&6&lWeapon Enchantment Orb &6[&a&n%max%&6]'
+      lore:
+      - '&a%success%% Success Rate'
+      - ''
+      - '&6+%new% Enchantment slots'
+      - '&6%max% Max Enchantment Slots'
+      - ''
+      - '&eIncreases the # of enchantment'
+      - '&eslots on a weapon by %new%,'
+      - '&eup to a maximum of %max%'
+      - '&7Drag n'' Drop onto an item to apply.'
+    armor:
+      material: EYE_OF_ENDER
+      custom-model-data: 0
+      force-glow: false
+      name: '&6&lArmor Enchantment Orb &6[&a&n%max%&6]'
+      lore:
+      - '&a%success%% Success Rate'
+      - ''
+      - '&6+%new% Enchantment slots'
+      - '&6%max% Max Enchantment Slots'
+      - ''
+      - '&eIncreases the # of enchantment'
+      - '&eslots on a piece of armor by %new%,'
+      - '&eup to a maximum of %max%'
+      - '&7Drag n'' Drop onto an item to apply.'
+    tool:
+      material: EYE_OF_ENDER
+      custom-model-data: 0
+      force-glow: false
+      name: '&6&lTool Enchantment Orb &6[&a&n%max%&6]'
+      lore:
+      - '&a%success%% Success Rate'
+      - ''
+      - '&6+%new% Enchantment slots'
+      - '&6%max% Max Enchantment Slots'
+      - ''
+      - '&eIncreases the # of enchantment'
+      - '&eslots on a tool by %new%,'
+      - '&eup to a maximum of %max%'
+      - '&7Drag n'' Drop onto an item to apply.'
+
+# Related to armor items, put the
+# material name here to make it
+# a valid armor item.
+# Another items can be added here
+# to make them valid armor items.
+armor-items:
+  # Items that count as helmet
+  helmet:
+  - HEAD
+  - SKULL_ITEM
+  - SKULL
+  - PLAYER_HEAD
+  - CREEPER_HEAD
+  - DRAGON_HEAD
+  - ZOMBIE_HEAD
+  - NETHERITE_HELMET
+  - DIAMOND_HELMET
+  - GOLD_HELMET
+  - GOLDEN_HELMET
+  - IRON_HELMET
+  - CHAINMAIL_HELMET
+  - LEATHER_HELMET
+  - TURTLE_SHELL
+  - PUMPKIN
+  - CARVED_PUMPKIN
+  - TURTLE_HELMET
+  # - "FEATHER" # Custom Item Example
+  # Items that count as chest plate
+  chest-plate:
+  - NETHERITE_CHESTPLATE
+  - DIAMOND_CHESTPLATE
+  - GOLD_CHESTPLATE
+  - GOLDEN_CHESTPLATE
+  - IRON_CHESTPLATE
+  - CHAINMAIL_CHESTPLATE
+  - LEATHER_CHESTPLATE
+  - ELYTRA
+  # - "LEATHER" # Custom Item Example
+  # Items that count as leggings
+  leggings:
+  - LEGS
+  - DIAMOND_LEGGINGS
+  - NETHERITE_LEGGINGS
+  - GOLD_LEGGINGS
+  - GOLDEN_LEGGINGS
+  - IRON_LEGGINGS
+  - CHAINMAIL_LEGGINGS
+  - LEATHER_LEGGINGS
+  # - "PAPER" # Custom Item Example
+  # Items that count as boots
+  boots:
+  - FEET
+  - DIAMOND_BOOTS
+  - NETHERITE_BOOTS
+  - GOLD_BOOTS
+  - GOLDEN_BOOTS
+  - IRON_BOOTS
+  - CHAINMAIL_BOOTS
+  - LEATHER_BOOTS
+# - "EGG"
+
+white-scroll:
+  # 通过命令 "/ae giveitem <玩家名> whitescroll" 获得白色卷轴
+  # 一旦附魔失败是否删除白色卷轴?
+  delete: true
+  # 在物品的 lore 中显示
+  lore-display: '&f保护'
+  item:
+    type: EMPTY_MAP
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+    name: '&f白色卷轴'
+    lore:
+    - '&f防止物品因附魔失败而被销毁'
+    - '&e将卷轴放在物品上面使用'
+
+destroy:
+  # 失败时书是否应该被销毁
+  enabled: true
+  # 物品是否应该被销毁
+  destroy-item: false
+
+chances:
+  # 几率是否为随机?
+  random: true
+  # 如果不是随机, 简单的数值应该为多少?
+  # 可以使用 `<最小数值>-<最大数值>` 定义一个区间
+  success: 92
+  destroy: 8
+  # 如果使用附魔书失败, 插件应该100%销毁物品或者使用破碎率来提供几步应用附魔也不销毁的几率
+  # 如果设置了 "enabled: true', 那么物品将始终在应用附魔失败时被销毁
+  destroy-if-fail:
+    enabled: false
+
+enchantment-book:
+  # 如果设置为 true, 附魔书可以在铁砧中给物品应用附魔.
+  anvil-application: true
+  # 如果设置为 true, 附魔书可以通过将附魔书拖拽到物品栏的物品上实现附魔的应用
+  drag-drop-application: true
+  item:
+    type: ENCHANTED_BOOK
+    id: 0
+    custom-model-data: 0
+    force-glow: false
+  # 变量: %enchant%, %enchant-no-color%, %description%, %level-description%, %applies%, %success%, %destroy%, %color%, %max-level%
+  name: '%group-color%&l&n%enchant-no-color% %level%'
+  lore:
+  - '&a%success%% 成功率'
+  - '&c%destroy%% 破碎率'
+  - '&e%description%'
+  - '&7%applies% 附魔'
+  - '&7将附魔书拖到要物品上进行附魔'
+
+applies-groups:
+  MISC_HELMETS:
+  - CARVED_PUMPKIN
+  SKULL_ITEM: []
+
+settings:
+  # If true, right-click triggers will work on off-hand.
+  right-click-triggers-on-off-hand: false
+  # 如果设置为 true, 砂轮将可以从物品中移除自定义附魔并返回少量经验值
+  grindstones-remove-custom-enchants: true
+  # 是否让物品中的附魔给予稀有率在lore中自动组织?
+  organizeEnchantsOnItems: true
+  # 用于组织物品lore中的附魔使用的模式
+  # 0 = 不组织
+  # 1 = 按组别组织
+  # 2 = 按组别 & 首字母顺序组织
+  # 3 = 按首字母顺序组织
+  lore-organize-mode: 2
+  # 如果该项设置为 true,  带有自定义附魔的物品将与带有原版附魔的物品具有相同的发光效果。
+  custom-enchants-cause-glow: true
+  # 非传统药水系统从玩家身上叠加和移除部分药水效果
+  # 所以移除一个不会移除所有药水效果. 建议设置的值: true
+  use-legacy-potions-system: true
+  # If this is enabled, when Fortune is paired with a custom enchant like
+  # SMELT or TP_DROPS, extra drops will be given just like if you used fortune on diamonds.
+  fortune-works-on-iron-gold: false
+  # 设置偷钱 STEAL_MONEY 效果是否启用
+  steal-money:
+    message-enabled: false
+  # Should trench drops be automatically added to inventory? (prevents lag)
+  trench-autoadd-items: false
+  # If true, when TRENCH is paired with MORE_DROPS, the MORE_DROPS effect will
+  # be applied to each block TRENCH breaks.
+  trench-works-with-more-drops: false
+  # If true, the Rename Tag will only work on enchanted items.
+  renametag-enchanted-only: true
+  # Length of name player can rename items to with itemnametag
+  itemnametag-max-name-length: 32
+  # Use all mined blocks durability on TRENCH items
+  # true = does how many blocks were mined damage on item
+  # false = does 1 durability damage on item
+  trench-do-all-durab: true
+  # Should magic dust lower failure chances on books as well?
+  lower-destroy-with-magic-dust: true
+  # Enable COMBO effect on mobs?
+  enable-combo-for-mobs: true
+  # Clear potion effects on quit (maybe useful in-case exploits are found) ?
+  clear-potion-effects-on-quit: true
+  # Should /ae market be enabled?
+  ae-market-enabled: true
+  # Use Numbers instead of Roman Numerals?
+  use-numbers: false
+  # If disabled, non-armor items such as pickaxes won't trigger enchants when worn on armor slots.
+  activate-non-armor-in-armor-slots: false
+  # If this is enabled, whenever an item with HELD is equipped/ unequipped, all armor will be reapplied.
+  # And when armor is equipped/ unequipped, the item you're holding will have its effects updated.
+  # This can solve issues with armor & held items giving the same potion effect but may cause some
+  # unwanted side effects. Test before using on a live server.
+  held-effect-static-cross-update: false
+  # Should HELD update SHIFT effect? This will only happen if player is holding an item with SHIFT type effects and is shifting
+  # Settings to false leads to permanent effects staying when held item is switched while SHIFT type is active
+  held-shift-cross-update: true
+  # EXPERIMENTAL!!! If true, AE will use a different way of handling damage for effects like DOUBLE_DAMAGE. This may solve
+  # issues with kills not counting towards players. If you find any issues
+  # with it, please report them on GitHub https://github.com/GC-spigot/AdvancedEnchantments/issues/new/choose
+  use-experimental-damage: false
+  # All blocks trench won't break.
+  trench-blacklist: []
+  # Trench Whitelist
+  # If list is not empty, will not allow to break any other blocks than listed here
+  trench-whitelist: []
+  # Whitelist for blocks VEIN_MINE can break.
+  veinmine-whitelist:
+  - COAL_ORE
+  - COPPER_ORE
+  - IRON_ORE
+  - GOLD_ORE
+  - LAPIS_ORE
+  - REDSTONE_ORE
+  - DIAMOND_ORE
+  - EMERALD_ORE
+  - NETHER_QUARTZ_ORE
+  - NETHER_GOLD_ORE
+  - ANCIENT_DEBRIS
+  - DEEPSLATE_COAL_ORE
+  - DEEPSLATE_COPPER_ORE
+  - DEEPSLATE_IRON_ORE
+  - DEEPSLATE_GOLD_ORE
+  - DEEPSLATE_LAPIS_ORE
+  - DEEPSLATE_REDSTONE_ORE
+  - DEEPSLATE_DIAMOND_ORE
+  - DEEPSLATE_EMERALD_ORE
+  # Blocks that BREAK_EFFECT should ignore
+  # WARNING if you remove any values, make sure to handle the blocks with conditions in enchantments
+  break-block-effect-blacklist:
+  - SPAWNER
+  - AIR
+  - LAVA
+  - WATER
+  - CAULDRON
+  - BEDROCK
+  # Worlds to disable enchantments in
+  enchantment-world-blacklist:
+  - no_enchantments_world
+  holy-whitescrolls-world-blacklist:
+  - no_holywhitescrolls_world
+  # If a player is in any of the worlds listed, the FLY effect will not work.
+  # Note that the world names are case-sensitive.
+  fly-world-blacklist:
+  - no_fly_world
+  open-enchanter-by-right-clicking-enchantment-table: false
+  # If this is enabled, "Nether trees" (and mushrooms) will be counted as regular
+  # trees for effects like BREAK_TREE.
+  stems-count-as-trees: false
+  # If this is enabled, BREAK_TREE effect will not break logs placed by players
+  respect-player-placed-blocks: true
+  # Get activated enchants listed in chat upon enchant type trigger
+  enchants-debug-mode: false
+  # Cooldown (in seconds) for /apply command, make sure to have a cooldown as extensive spam could impact performance
+  apply-cooldown: 20
+  # White scroll material blacklist
+  whitescroll-material-blacklist:
+  - STONE
+  # Amount of souls given per kill
+  souls-per-kill: 1
+  # TRENCH optimization system configuration
+  trench-optimization:
+    # Should player automatically detect what protection plugins are used and work from there
+    #   Explanation of how this works: Currently AE can support either WorldGuard only checks
+    #   or Universal which will support all protection plugins but this may sometimes result in
+    #   poor performance (depending on what protection plugins server is running). Recommended to
+    #   leave this setting as "true" if you are using other land plugins (ie. Factions, SkyBlock, etc.)
+    # Setting this to FALSE will only make the plugin work with WorldGuard
+    # Setting this to TRUE will let plugin choose between WG-only or Universal method, may cause performance loss
+    automaticallyDetect: true
+  # Radius of the "LAVA_WALKER" enchant. Can't be less than 2 or more than 10.
+  lava-walker-radius: 2
+  # Same as lavawalker-range but for WATER_WALKER.
+  water-walker-radius: 2
+  # Should souls be collected from mobs?
+  collect-souls-from-mobs: false
+  # Should souls be collected from players?
+  collect-souls-from-players: false
+  
+  # Show enchantment level for level 1 enchants?
+  # E.g. if enabled, enchant "Gears I" would be shown as "Gears', but "Gears II" would stay the same.
+  showFirstLevel: true
+  # If WorldGuardExtraFlags is installed, should the FLY effect only work if
+  # the player is allowed to fly in that area.
+  use-worldguard-fly-flag: false
+  # If set to false, mobs that spawn from spawners won't
+  # drop custom drops defined in the mobs.yml file.
+  custom-drops-from-spawners: false
+  # Collecting souls from mining
+  # This can be used as a "tokens" currency for prison servers
+  miningSouls:
+    enabled: false
+    # Chance to gain a soul from mining
+    chance: 20
+  fishingSouls:
+    enabled: false
+    # Chance to gain a soul from fishing
+    chance: 20
+  # Should BOW enchants only activate if bow that was shot with was extended fully?
+  bow-full-power: true
+  # Should enchantment descriptions be added under enchant names in lores?
+  #   for per level descriptions use %level-description%. (will default to %description% if level description is not setup)
+  #   if level description is set, but here it's still to %description%, the placeholder won't parse!
+  lore-descriptions:
+    enabled: false
+    display: '%group-color%* &8%description%'
+  # Should block breaking effects, such as TRENCH or TP_DROPS give McMMO EXP?
+  give-mcmmo-with-custom-block-breaks: true
+  # Should placing of armor blocks be allowed? (IE CARVED_PUMPKIN's)
+  allow-place-of-armor-block: true
+  # Should the blocks broken by effects be counted in minecraft stats
+  minecraft-stats-blocks-broken-count: true
+  # Should EXP effect give xp even when tool has silktouch
+  exp-effect-ignore-silktouch: false
+  ignored-metadata-block-drops: []
+#  - "any-meta"
+
+# Do not edit this setting
+version: 1.0

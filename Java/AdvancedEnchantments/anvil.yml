@@ -1,0 +1,64 @@
+# AE 是否应该接管铁砧
+# 如果这项被禁用, 则铁砧上的自定义附魔将无法使用.
+enabled: true
+
+# 如果设置为 true, AE 将处理与原版相同的维修费用.
+# 你可以在这里阅读更多信息 https://minecraft.fandom.com/wiki/Anvil_mechanics.
+use-repair-cost: true
+
+# 如果设置为 true, 通常不能放在物品上的附魔（如亡灵杀手和锋利）将被允许组合。
+allow-illegal-vanilla-enchant-combinations: false
+allow-illegal-custom-enchant-combinations: false
+
+
+# 原版附魔可以组合的最高级别
+levels:
+  # 护甲类附魔
+  Protection: 4
+  Fire-Protection: 4
+  Feather-Falling: 4
+  Blast-Protection: 4
+  Projectile-Protection: 4
+  Respiration: 3
+  Aqua-Affinity: 1
+  Thorns: 3
+  Depth-Strider: 3
+  Frost-Walker: 2
+  Curse-of-Binding: 1
+  Soul-Speed: 3
+  # 剑类附魔
+  Sharpness: 5
+  Smite: 5
+  Bane-of-Arthropods: 5
+  Knockback: 2
+  Fire-Aspect: 2
+  Looting: 3
+  Sweeping-Edge: 3
+  # 弓类附魔
+  Power: 5
+  Punch: 2
+  Flame: 1
+  Infinity: 1
+  # 弩类附魔
+  Multishot: 1
+  Piercing: 4
+  Quick-Charge: 3
+  # 工具类附魔
+  Efficiency: 5
+  Silk-Touch: 1
+  Fortune: 3
+  # 钓鱼竿类附魔
+  Luck-of-the-Sea: 3
+  Lure: 3
+  # 适用于任意物品的附魔
+  Unbreaking: 3
+  Mending: 1
+  Curse-of-Vanishing: 1
+  # 三叉戟附魔
+  Channeling: 1
+  Impaling: 5
+  Loyalty: 3
+  Riptide: 3
+
+# 如果启用这项, 你可以将带附魔的物品的附魔应用到附魔书上
+allow-backwards-enchant-books: false

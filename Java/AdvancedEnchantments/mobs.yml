@@ -1,0 +1,12 @@
+# 当怪物被击杀时，你可以设置怪物掉落的自定义AE物品
+# 物品名称必须与来自指令 '/ae giveitem' 中的物品名称相同 (以备将来参考).
+
+# 目前已有的物品: whitescroll, renametag, blocktrak, stattrak, soultracker, mobtrak, transmog, randomenchantmentbook, secret:<amount>:<group>
+
+# 格式: "<item name>:<count>"
+
+mobs:
+#  ZOMBIE:
+#    chance: 75
+#    items:
+#      - "randomenchantmentbook:1"

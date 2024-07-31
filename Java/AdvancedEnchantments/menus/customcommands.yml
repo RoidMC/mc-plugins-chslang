@@ -1,0 +1,207 @@
+# 自定义指令
+enchantment-info:
+  # 是否启用该指令?
+  enabled: true
+  # 修改命令的开头
+  # 在游戏中这样使用: /<指令> <参数>
+  command: /enchant
+  aliases:
+    - /enchantment
+  # 指令需要的权限
+  # 设置为 "" 以禁用
+  permission: ""
+  inventory:
+    # 物品栏大小 (9-18-27-36-45-54)
+    # 在 HOPPER 漏斗类型物品栏上不起作用
+    size: 9
+    # 物品栏名称
+    name: '&e%enchant%&7 信息'
+    items:
+      # Slots start from 0
+      # This number defines the inventory slot.
+      2:
+        type: STAINED_GLASS_PANE
+        id: 15
+        custom-model-data: 0
+        force-glow: false
+        name: " "
+        lore: [ ]
+      3:
+        type: ENCHANTED_BOOK
+        id: 0
+        custom-model-data: 0
+        force-glow: false
+        name: '&e%enchant% &7的详细信息'
+        lore:
+        - '&e附魔名称 &7>> &r%ench-colors%'
+        - '&e适用物品 &7>> &r%applies-to%'
+        - '&e最大等级 &7>> &r%max-lvl%'
+        - '&e附魔介绍 &7>> &r%desc%'
+        # 你也可以使用 %group-color% 来获得附魔颜色
+        prefix-addon: " &f* &7"
+      4:
+        type: STAINED_GLASS_PANE
+        id: 15
+        custom-model-data: 0
+        force-glow: false
+        name: " "
+        lore: [ ]
+      5:
+        type: CHEST
+        id: 0
+        custom-model-data: 0
+        force-glow: false
+        name: "&e适用物品 &7>>"
+        lore:
+          - "&7%applies-to%"
+      6:
+        type: STAINED_GLASS_PANE
+        id: 15
+        custom-model-data: 0
+        force-glow: false
+        name: " "
+        lore: [ ]
+enchantments:
+  # 是否启用该命令?
+  enabled: true
+  # 修改命令
+  # 在游戏中的使用方式: /<command>
+  command: /enchants
+  aliases:
+    - /enchantments
+  # 指令需要的权限
+  # 设置为 "" 以禁用
+  permission: ""
+  mode:
+    # 模式: GROUPS, ALL
+    # 如果设置为 GROUPS, 将显示第一组选择物品栏
+    # 如果设置为 ALL, 第一物品栏将显示所有可用附魔
+    currentMode: GROUPS
+  inventory:
+    # 界面大小 (18-27-36-45-54)
+    size: 36
+    # 是否在下一页/上一页物品上显示页码?
+    display-page-number: true
+    # 界面名称
+    name: '&7附魔列表'
+    items:
+      # 物品槽从 0 开始
+      # 这个数字定义库存槽位置
+      11:
+        type: STAINED_GLASS_PANE
+        id: 0
+        custom-model-data: 0
+        force-glow: false
+        # 应该打开什么品质的附魔列表?
+        group: SIMPLE
+        name: '&f普通&7品质附魔'
+        lore:
+        - ' &7点击预览所有'
+        - ' &f普通&7品质附魔!'
+      12:
+        type: STAINED_GLASS_PANE
+        id: 5
+        custom-model-data: 0
+        force-glow: false
+        group: "UNIQUE"
+        name: '&a稀有&7品质附魔列表'
+        lore:
+        - ' &7点击预览所有'
+        - ' &a稀有&7品质附魔!'
+      13:
+        type: STAINED_GLASS_PANE
+        id: 3
+        custom-model-data: 0
+        force-glow: false
+        group: "ELITE"
+        name: '&b高级&7品质附魔列表'
+        lore:
+        - ' &7点击预览所有'
+        - ' &b高级&7品质附魔!'
+      14:
+        type: STAINED_GLASS_PANE
+        id: 4
+        custom-model-data: 0
+        force-glow: false
+        group: "ULTIMATE"
+        name: '&d史诗&7品质附魔列表'
+        lore:
+        - ' &7点击预览所有'
+        - ' &d史诗&7品质附魔!'
+      15:
+        type: STAINED_GLASS_PANE
+        id: 1
+        custom-model-data: 0
+        force-glow: false
+        group: "LEGENDARY"
+        name: '&e传说&7品质附魔列表'
+        lore:
+        - ' &7点击预览所有'
+        - ' &e传说&7品质附魔!'
+      22:
+        type: STAINED_GLASS_PANE
+        id: 6
+        custom-model-data: 0
+        force-glow: false
+        name: '&6神话&7品质附魔列表'
+        lore:
+        - ' &7点击预览所有'
+        - ' &6神话&7品质附魔!'
+      fill:
+        type: STAINED_GLASS_PANE
+        id: 15
+        custom-model-data: 0
+        force-glow: false
+        name: " "
+        lore: [ ]
+  group-enchantment-inventory:
+    name: '%color%%group% &8品质'
+    # 用此物品填充空物品槽
+    fill-item:
+      material: STAINED_GLASS_PANE
+      id: 15
+      custom-model-data: 0
+      name: " "
+      lore: [ ]
+    go-back-item:
+      # 是否显示 "返回" 物品?
+      enabled: true
+      slot: "%invSize% - 7"
+      item:
+        type: NETHER_STAR
+        id: 0
+        custom-model-data: 0
+      name: "&c&l返回"
+      lore: [ ]
+    previous-page:
+      material: STAINED_GLASS_PANE
+      id: 14
+      custom-model-data: 0
+      name: "&c上一页"
+      lore: [ ]
+      slot: "%invSize% - 3"
+    next-page:
+      material: STAINED_GLASS_PANE
+      id: 5
+      custom-model-data: 0
+      name: "&a下一页"
+      lore: [ ]
+      slot: "%invSize% - 2"
+    item:
+      type: ENCHANTED_BOOK
+      id: 0
+      custom-model-data: 0
+      force-glow: false
+      # 当玩家点击其中一个附魔时应该运行什么指令?
+      # %max-lvl% - 使用阿拉伯数字显示最大等级, %max-lvl-roman% - 使用罗马数字显示最大等级
+      command: "/enchant %enchantment%"
+      name: '&e%enchant% &8[%color%%group%&8]'
+      lore:
+      - '&8&m&l  &8&m&l&k|&7&m&l                                &8&m&l&k|&8&m&l  &r'
+      - ' &f* &e附魔名称 &7>> &r%enchant%'
+      - ' &f* &e附魔品质 &7>> &r%ench-colors%'
+      - ' &f* &e最高等级 &7>> &r%max-lvl-roman%'
+      - ' &f* &e适用物品 &7>> &r%applies-to%'
+      - ' &r%desc%'
+      - '&8&m&l  &8&m&l&k|&7&m&l                                &8&m&l&k|&8&m&l  &r'
+      prefix-addon: " &f* &7"

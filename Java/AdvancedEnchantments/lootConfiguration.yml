@@ -1,0 +1,83 @@
+# 在世界中和村民交易中随机产生的战利品的配置文件
+#  随机位置包括:
+#  * 野外产生的任何箱子，例如刷怪笼房间、废弃矿道等。
+#  配置村民交易. 可以和村民交易自定义的附魔书和管理物品, 例如. 白色卷轴, 各种球, 各种尘埃.
+
+# ------ 随机战利品部分 ------ #
+randomLoot:
+  # 世界中是否随机生成战利品?
+  randomLootEnabled: false
+
+  # 随机战利品箱中生成的最大自定义物品数
+  maxItemsPerContainer: 2
+
+  # 生成任一物品的几率
+  chanceOfItems: 5
+
+  # Blacklisted groups, these group books cannot generate in random loot
+  blacklisted-groups:
+    - 'STAFF'
+
+  # 几率格式:
+  # 物品名称ITEM_NAME: 几率 (0 到 100)
+  chances:
+    SLOT_INCREASER: 5
+    WHITE_SCROLL: 12
+    MYSTERY_DUST: 0
+    SECRET_DUST: 15
+    MAGIC_DUST: 12
+    BLACK_SCROLL: 7
+    RANDOMIZER: 10
+    RENAME_TAG: 8
+    BLOCKTRAK: 3
+    FISHTRAK: 3
+    STATTRAK: 3
+    MOBTRAK: 3
+    SOUL_TRACKER: 2
+    SOUL_GEM: 15
+    TRANSMOG_SCROLL: 8
+    HOLY_WHITE_SCROLL: 4
+    ARMOR_ORB: 2
+    WEAPON_ORB: 2
+    TOOL_ORB: 2
+    RANDOM_ENCHANT_BOOK: 10
+
+# ------ 村民交易部分 ------ #
+villagerTrades:
+  # 村民们能够交易自定义附魔/物品吗?
+  villagerTradesEnabled: false
+
+  # 村民们是否能够交易管理物品? 例如. 白色卷轴, 黑色卷轴, 魔法尘埃
+  # 如果设置为 false, they will only trade custom enchantment books
+  tradeAllLoot: true
+
+  # Chance of any item(s) being added as a trade
+  chanceOfItems: 3
+
+  # Blacklisted groups, these group books cannot be in villager trades
+  blacklisted-groups:
+    - 'STAFF'
+
+  # 几率格式:
+  # 物品名称ITEM_NAME: 几率 (0 到 100)
+  chances:
+    SLOT_INCREASER: 5
+    WHITE_SCROLL: 12
+    MYSTERY_DUST: 0
+    SECRET_DUST: 15
+    MAGIC_DUST: 12
+    BLACK_SCROLL: 7
+    RANDOMIZER: 10
+    RENAME_TAG: 8
+    BLOCKTRAK: 3
+    FISHTRAK: 3
+    STATTRAK: 3
+    MOBTRAK: 3
+    SOUL_TRACKER: 2
+    SOUL_GEM: 15
+    TRANSMOG_SCROLL: 8
+    HOLY_WHITE_SCROLL: 4
+    ARMOR_ORB: 2
+    WEAPON_ORB: 2
+    TOOL_ORB: 2
+    RANDOM_ENCHANT_BOOK: 10

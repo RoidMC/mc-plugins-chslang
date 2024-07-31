@@ -1,0 +1,47 @@
+# 附魔台支持
+enabled: true
+
+# 在附魔台中附魔获得自定义附魔的几率
+chance: 45 # 可填入的值: 1 到 100 %
+
+# 每个品质等级的附魔在附魔台中出现的几率 (仅当触发 'chance' 的值后生效)
+# 只有在此处列出的品质等级在附魔台中可用
+groupChances:
+  SIMPLE: 50
+  UNIQUE: 40
+  ELITE: 30
+  ULTIMATE: 20
+  LEGENDARY: 10
+
+# 设置一次可以从附魔中获得多少自定义附魔
+enchantCount:
+  lowestLevel: 1 # 可填写的值: 1 - 10
+  middleLevel: 1-2 # 可填写的值: 1 - 10
+  highestLevel: 2-3 # 可填写的值: 1 - 10
+
+prices:
+  enabled: false
+  # 配置附魔台花费的经验值
+  # 默认情况下这些值是在两个填写值之间随机选择的
+  # 但可以设置为花费特定的经验, 甚至可以高于原版的经验花费
+  lowestLevel: 3-9 # 可填写的值: 1 - 1000
+  middleLevel: 10-24 # 可填写的值: 1 - 1000
+  highestLevel: 30 # 可填写的值: 1 - 1000
+
+# Custom enchants from enchantment table
+enchantmentBooks:
+  enabled: true
+  # Chance of getting custom enchantments when enchanting with enchantment table.
+  # This will give custom enchantment book instead of vanilla books, and can be
+  #  applied either with anvil or drag & drop onto item.
+  chance: 3 # 可填入的值: 1 到 100 %
+  groups:
+    lowest:
+      - SIMPLE
+      - UNIQUE
+    middle:
+      - ELITE
+      - ULTIMATE
+    highest:
+      - LEGENDARY
+      - FABLED

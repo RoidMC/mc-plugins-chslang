@@ -1,0 +1,136 @@
+# 附魔品质可用用于附魔商店, 用来销售不同类型的附魔书. 
+# 你可以对他们进行分组并为每个品质指定全局颜色
+# 你可以删除默认生成的品质并创建自己的自定义品质
+settings:
+  magic-dust:
+    # 每种品质使用魔法尘埃的限制
+    # 如果设置为 false, 魔法尘埃可以应用于不同的品质
+    limit-applying-per-group: true
+    # 限制每种品质的随机卷轴应用
+  randomization-scrolls:
+    # 如果设置为 false, 随机卷轴可以应用于不同的品质
+    limit-applying-per-group: true
+  # 如果设置的品质无效, 则返回的品质为什么
+  fallback-group: SIMPLE
+groups:
+  SIMPLE:
+    global-color: "&7"
+    group-name: "普通"
+    # 在该选项中更改每种品质的物品类型
+    item:
+      type: FIREWORK_CHARGE
+      id: 0
+      custom-model-data: 0
+      # 该设置仅用于设置烟花使用的颜色, 可使用RGB颜色
+      # 可以在这里查找颜色: https://htmlcolorcodes.com/color-picker/
+      rgb-color: 200;200;200
+    slot-increaser:
+      # 使用此类型的附魔槽增量器时应添加多少附魔槽
+      slots: 1
+      custom-model-data: 0
+    magic-dust:
+      # 右键点击时给予附魔的成功率
+      # 尘埃拥有多大的成功率? (例如: 5 代表一直为, 5-10 代表在5到10之间随机选取一个数值)
+      success: 1-15
+      # 给予魔法尘埃而不是未知尘埃的几率
+      chance: 22
+  UNIQUE:
+    global-color: "&a"
+    group-name: "稀有"
+    item:
+      type: FIREWORK_CHARGE
+      id: 0
+      custom-model-data: 0
+      # 该设置仅用于设置烟花使用的颜色, 可使用RGB颜色
+      # 可以在这里查找颜色: https://htmlcolorcodes.com/color-picker/
+      rgb-color: 122;255;80
+    slot-increaser:
+      # 使用此类型的附魔槽增量器时应添加多少附魔槽
+      slots: 1
+      custom-model-data: 0
+    magic-dust:
+      # 右键点击时给予附魔的成功率
+      # 尘埃拥有多大的成功率? (例如: 5 代表一直为, 5-10 代表在5到10之间随机选取一个数值)
+      success: 1-15
+      # 给予魔法尘埃而不是未知尘埃的几率
+      chance: 22
+  ELITE:
+    global-color: "&b"
+    group-name: "高级"
+    item:
+      type: FIREWORK_CHARGE
+      id: 0
+      custom-model-data: 0
+      # 该设置仅用于设置烟花使用的颜色, 可使用RGB颜色
+      # 可以在这里查找颜色: https://htmlcolorcodes.com/color-picker/
+      rgb-color: 20;250;255
+    slot-increaser:
+      # 使用此类型的附魔槽增量器时应添加多少附魔槽
+      slots: 1
+      custom-model-data: 0
+    magic-dust:
+      # 右键点击时给予附魔的成功率
+      # 尘埃拥有多大的成功率? (例如: 5 代表一直为, 5-10 代表在5到10之间随机选取一个数值)
+      success: 1-15
+      # 给予魔法尘埃而不是未知尘埃的几率
+      chance: 22
+  ULTIMATE:
+    global-color: "&e"
+    group-name: "史诗"
+    item:
+      type: FIREWORK_CHARGE
+      id: 0
+      custom-model-data: 0
+      # 该设置仅用于设置烟花使用的颜色, 可使用RGB颜色
+      # 可以在这里查找颜色: https://htmlcolorcodes.com/color-picker/
+      rgb-color: 250;255;0
+    slot-increaser:
+      # 使用此类型的附魔槽增量器时应添加多少附魔槽
+      slots: 1
+      custom-model-data: 0
+    magic-dust:
+      # 右键点击时给予附魔的成功率
+      # 尘埃拥有多大的成功率? (例如: 5 代表一直为, 5-10 代表在5到10之间随机选取一个数值)
+      success: 1-15
+      # 给予魔法尘埃而不是未知尘埃的几率
+      chance: 22
+  LEGENDARY:
+    global-color: "&6"
+    group-name: "传说"
+    item:
+      type: FIREWORK_CHARGE
+      id: 0
+      custom-model-data: 0
+      # 该设置仅用于设置烟花使用的颜色, 可使用RGB颜色
+      # 可以在这里查找颜色: https://htmlcolorcodes.com/color-picker/
+      rgb-color: 133;50;168
+    slot-increaser:
+      # 使用此类型的附魔槽增量器时应添加多少附魔槽
+      slots: 1
+      custom-model-data: 0
+    magic-dust:
+      # 右键点击时给予附魔的成功率
+      # 尘埃拥有多大的成功率? (例如: 5 代表一直为, 5-10 代表在5到10之间随机选取一个数值)
+      success: 1-15
+      # 给予魔法尘埃而不是未知尘埃的几率
+      chance: 22
+  FABLED:
+    global-color: "&d"
+    group-name: "神话"
+    item:
+      type: FIREWORK_CHARGE
+      id: 0
+      custom-model-data: 0
+      # 该设置仅用于设置烟花使用的颜色, 可使用RGB颜色
+      # 可以在这里查找颜色: https://htmlcolorcodes.com/color-picker/
+      rgb-color: 133;50;168
+    slot-increaser:
+      # 使用此类型的附魔槽增量器时应添加多少附魔槽
+      slots: 1
+      custom-model-data: 0
+    magic-dust:
+      # 右键点击时给予附魔的成功率
+      # 尘埃拥有多大的成功率? (例如: 5 代表一直为, 5-10 代表在5到10之间随机选取一个数值)
+      success: 1-15
+      # 给予魔法尘埃而不是未知尘埃的几率
+      chance: 22
