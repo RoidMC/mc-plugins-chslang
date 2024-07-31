@@ -14,7 +14,7 @@ randomLoot:
   # 生成任一物品的几率
   chanceOfItems: 5
 
-  # Blacklisted groups, these group books cannot generate in random loot
+  # 黑名单列表，这些组的附魔书不能生成随机战利品
   blacklisted-groups:
     - 'STAFF'
 
@@ -48,13 +48,13 @@ villagerTrades:
   villagerTradesEnabled: false
 
   # 村民们是否能够交易管理物品? 例如. 白色卷轴, 黑色卷轴, 魔法尘埃
-  # 如果设置为 false, they will only trade custom enchantment books
+  # 如果设置为 false 村民将只会交易自定义附魔书
   tradeAllLoot: true
 
-  # Chance of any item(s) being added as a trade
+  # 生成任一物品的几率
   chanceOfItems: 3
 
-  # Blacklisted groups, these group books cannot be in villager trades
+  # 黑名单列表，这些组的附魔书不能与村民交易
   blacklisted-groups:
     - 'STAFF'
 

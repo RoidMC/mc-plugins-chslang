@@ -89,10 +89,10 @@ disable-enchants:
   test_world: # 世界名
     - test_enchant
 
-# Only disables armorsets events
+# 仅禁用盔甲事件
 disable-armorsets:
-  # Disable armorsets in specific world
-  test_world: # world name
+  # 在特定世界禁用盔甲
+  test_world: # 世界名称
     - test_enchant
 
 souls:
@@ -382,52 +382,51 @@ items:
       keep-after-death: false
   # Orbs allow applying x number of enchants
   orb:
-    lore: '&a%max% Enchantment Slots &7(Orb [&a+%increased%&7])'
+    lore: '&a%max% 附魔槽位 &7(Orb [&a+%increased%&7])'
     weapon:
       material: EYE_OF_ENDER
       custom-model-data: 0
-      force-glow: false
-      name: '&6&lWeapon Enchantment Orb &6[&a&n%max%&6]'
+      name: '&6&l武器附魔球 &6[&a&n%max%&6]'
       lore:
-      - '&a%success%% Success Rate'
+      - '&a%success%% 成功率'
       - ''
-      - '&6+%new% Enchantment slots'
-      - '&6%max% Max Enchantment Slots'
+      - '&6+%new% 附魔槽位'
+      - '&6%max% 最大附魔槽位'
       - ''
-      - '&eIncreases the # of enchantment'
-      - '&eslots on a weapon by %new%,'
+      - '&e为武器增加 # of enchantment'
+      - '&eslots on a weapon by,'
       - '&eup to a maximum of %max%'
-      - '&7Drag n'' Drop onto an item to apply.'
+      - '&7将该物品拖到武器上使用'
     armor:
       material: EYE_OF_ENDER
       custom-model-data: 0
       force-glow: false
-      name: '&6&lArmor Enchantment Orb &6[&a&n%max%&6]'
+      name: '&6&l护甲附魔球 &6[&a&n%max%&6]'
       lore:
-      - '&a%success%% Success Rate'
+      - '&a%success%% 成功率'
       - ''
-      - '&6+%new% Enchantment slots'
-      - '&6%max% Max Enchantment Slots'
+      - '&6+%new% 附魔槽位'
+      - '&6%max% 最大附魔槽位'
       - ''
       - '&eIncreases the # of enchantment'
       - '&eslots on a piece of armor by %new%,'
       - '&eup to a maximum of %max%'
-      - '&7Drag n'' Drop onto an item to apply.'
+      - '&7将该物品拖到护甲上使用'
     tool:
       material: EYE_OF_ENDER
       custom-model-data: 0
       force-glow: false
-      name: '&6&lTool Enchantment Orb &6[&a&n%max%&6]'
+      name: '&6&l工具附魔球 &6[&a&n%max%&6]'
       lore:
-      - '&a%success%% Success Rate'
+      - '&a%success%% 成功率'
       - ''
-      - '&6+%new% Enchantment slots'
-      - '&6%max% Max Enchantment Slots'
+      - '&6+%new% 附魔槽位'
+      - '&6%max% 最大附魔槽位'
       - ''
       - '&eIncreases the # of enchantment'
       - '&eslots on a tool by %new%,'
       - '&eup to a maximum of %max%'
-      - '&7Drag n'' Drop onto an item to apply.'
+      - '&7将该物品拖到工具上使用'
 
 # Related to armor items, put the
 # material name here to make it
@@ -566,55 +565,53 @@ settings:
   # 非传统药水系统从玩家身上叠加和移除部分药水效果
   # 所以移除一个不会移除所有药水效果. 建议设置的值: true
   use-legacy-potions-system: true
-  # If this is enabled, when Fortune is paired with a custom enchant like
-  # SMELT or TP_DROPS, extra drops will be given just like if you used fortune on diamonds.
+  # 如果这项启用, 当财富 Fortune 与一个自定义的附魔配对时
+  # 比如 熔岩SMELT 或 TP_DROPS, 额外的掉落被给予, 就像你在钻石上使用财富一样（?）
   fortune-works-on-iron-gold: false
   # 设置偷钱 STEAL_MONEY 效果是否启用
   steal-money:
     message-enabled: false
-  # Should trench drops be automatically added to inventory? (prevents lag)
+  # 是否将挖洞 TRENCH 的掉落物自动添加到背包中? (防止滞后)
   trench-autoadd-items: false
-  # If true, when TRENCH is paired with MORE_DROPS, the MORE_DROPS effect will
-  # be applied to each block TRENCH breaks.
+  # 如果设置为 true, 当 TRENCH 配对到更多掉落物 MORE_DROPS, 更多掉落物 MORE_DROPS 效果会
+  # 应用到每个 TRENCH 方块破坏中.
   trench-works-with-more-drops: false
-  # If true, the Rename Tag will only work on enchanted items.
-  renametag-enchanted-only: true
-  # Length of name player can rename items to with itemnametag
+  # 如果设置为 true, 当 TRENCH 配对到更多掉落物 MORE_DROPS, 更多掉落物 MORE_DROPS 效果会
+  # 应用到每个 TRENCH 方块破坏中.
   itemnametag-max-name-length: 32
-  # Use all mined blocks durability on TRENCH items
-  # true = does how many blocks were mined damage on item
-  # false = does 1 durability damage on item
+  # 在 TRENCH 物品上使用所有已挖掘方块的耐久度
+  # true = 物品上有多少方块受到挖掘损坏does how many blocks were mined damage on item
+  # false = 受到 1 durab. 损伤
   trench-do-all-durab: true
-  # Should magic dust lower failure chances on books as well?
+  # 魔法尘埃是否也应该降低附魔书的失败几率?
   lower-destroy-with-magic-dust: true
-  # Enable COMBO effect on mobs?
+  # 在怪物身上启用 连击COMBO 效果?
   enable-combo-for-mobs: true
-  # Clear potion effects on quit (maybe useful in-case exploits are found) ?
+  # 退出游戏时清除身上的药水效果 (在发现漏洞时可能有用) ?
   clear-potion-effects-on-quit: true
-  # Should /ae market be enabled?
+  # 是否启用 /ae market ?
   ae-market-enabled: true
-  # Use Numbers instead of Roman Numerals?
+  # 是否使用阿拉伯数字替代罗马数字?
   use-numbers: false
-  # If disabled, non-armor items such as pickaxes won't trigger enchants when worn on armor slots.
+  # 如果禁用该功能, 非装备物品如镐子放在装备栏里时不会触发附魔.
   activate-non-armor-in-armor-slots: false
-  # If this is enabled, whenever an item with HELD is equipped/ unequipped, all armor will be reapplied.
-  # And when armor is equipped/ unequipped, the item you're holding will have its effects updated.
-  # This can solve issues with armor & held items giving the same potion effect but may cause some
-  # unwanted side effects. Test before using on a live server.
+  # 如果启用该功能, 无论何时手持的物品装备/未装备, 所有的护甲都将重新使用.
+  # 并且当护甲装备/未装备时, 你手持的物品将更新其效果.
+  # 这可以解决护甲和持有物品的问题, 提供相同的药水效果, 但可能会导致一些不必要的副作用
+  # 请在实时服务器上使用前先进行测试
   held-effect-static-cross-update: false
-  # Should HELD update SHIFT effect? This will only happen if player is holding an item with SHIFT type effects and is shifting
-  # Settings to false leads to permanent effects staying when held item is switched while SHIFT type is active
+  # 手持SHIFT类效果物品是否应该更新潜行效果? 这只会发生在一个玩家具有潜行SHIFT类型效果的物品并且在位移的情况下
   held-shift-cross-update: true
-  # EXPERIMENTAL!!! If true, AE will use a different way of handling damage for effects like DOUBLE_DAMAGE. This may solve
-  # issues with kills not counting towards players. If you find any issues
-  # with it, please report them on GitHub https://github.com/GC-spigot/AdvancedEnchantments/issues/new/choose
+  # 实验性功能!!! 如果设置为 true, AE 将会使用不同的方式处理伤害, 比如双重伤害 DOUBLE_DAMAGE. 
+  # 这可能可以解决击杀不计入玩家的问题, 如果你发现任何问题
+  # 请在 GitHub 上提交报告 https://github.com/GC-spigot/AdvancedEnchantments/issues/new/choose
   use-experimental-damage: false
-  # All blocks trench won't break.
+  # 所有的方块 trench 都不会破坏
   trench-blacklist: []
-  # Trench Whitelist
-  # If list is not empty, will not allow to break any other blocks than listed here
+  # Trench 白名单
+  # 如果名单不是空的, 将不允许破坏除此处列出的其他任何方块
   trench-whitelist: []
-  # Whitelist for blocks VEIN_MINE can break.
+  # 以下是 VEIN_MINE 能够破坏的方块白名单
   veinmine-whitelist:
   - COAL_ORE
   - COPPER_ORE
@@ -644,79 +641,76 @@ settings:
   - WATER
   - CAULDRON
   - BEDROCK
-  # Worlds to disable enchantments in
+  # 在以下世界禁用附魔功能
   enchantment-world-blacklist:
   - no_enchantments_world
   holy-whitescrolls-world-blacklist:
   - no_holywhitescrolls_world
-  # If a player is in any of the worlds listed, the FLY effect will not work.
-  # Note that the world names are case-sensitive.
+  # 如果玩家在下方列表列出的世界中, 飞行 FLY 效果将不会生效
+  # 请注意, 世界名是区分大小写的
   fly-world-blacklist:
   - no_fly_world
   open-enchanter-by-right-clicking-enchantment-table: false
-  # If this is enabled, "Nether trees" (and mushrooms) will be counted as regular
-  # trees for effects like BREAK_TREE.
+  # 如果这项被启用, "下界树" (以及蘑菇) 不会在像是 BREAK_TREE 的效果中作为常规的树计数
   stems-count-as-trees: false
   # If this is enabled, BREAK_TREE effect will not break logs placed by players
   respect-player-placed-blocks: true
-  # Get activated enchants listed in chat upon enchant type trigger
+  # 触发附魔类型后, 在聊天栏中获得激活的附魔列表
   enchants-debug-mode: false
-  # Cooldown (in seconds) for /apply command, make sure to have a cooldown as extensive spam could impact performance
+  # 指令/apply command 的冷却时间 (以秒为单位), 请确保设置一个冷却时间, 以免大量的刷屏影响性能
   apply-cooldown: 20
-  # White scroll material blacklist
+  # 白色卷轴的材料黑名单
   whitescroll-material-blacklist:
   - STONE
-  # Amount of souls given per kill
+  # 每次击杀给予的灵魂数量
   souls-per-kill: 1
-  # TRENCH optimization system configuration
+  # TRENCH 优化系统配置
   trench-optimization:
-    # Should player automatically detect what protection plugins are used and work from there
-    #   Explanation of how this works: Currently AE can support either WorldGuard only checks
-    #   or Universal which will support all protection plugins but this may sometimes result in
-    #   poor performance (depending on what protection plugins server is running). Recommended to
-    #   leave this setting as "true" if you are using other land plugins (ie. Factions, SkyBlock, etc.)
-    # Setting this to FALSE will only make the plugin work with WorldGuard
-    # Setting this to TRUE will let plugin choose between WG-only or Universal method, may cause performance loss
+    # 玩家是否应该自动检测使用了什么保护插件并从那里开始工作
+    #   工作原理解释: 目前AE只支持WorldGuard或通用的检测
+    #   后者将支持所有的保护插件但这可能会导致性能表现不佳
+    #   (这取决于服务器当前正在运行的保护插件). 如果您正在使用
+    #   其他的土地插件例如 (如派系、SkyBlock等) 建议将此设置保留为 "true"
+    # 设置为 FALSE 时该插件只会与WorldGuard一起工作
+    # 设置为 TRUE 将让插件在仅WorldGuard和全局之间进行选择, 这可能会导致性能损失
     automaticallyDetect: true
-  # Radius of the "LAVA_WALKER" enchant. Can't be less than 2 or more than 10.
+  # 附魔熔岩行者 "LAVA_WALKER" 的结界半径. 不能小于 2 或者大于 10.
   lava-walker-radius: 2
-  # Same as lavawalker-range but for WATER_WALKER.
+  # 与熔岩行者一样但是是适用于流水行者 "WATER_WALKER' 的.
   water-walker-radius: 2
-  # Should souls be collected from mobs?
+  # 灵魂是否可以从怪物那里收集?
   collect-souls-from-mobs: false
-  # Should souls be collected from players?
+  # 灵魂是否可以从玩家那里收集? 
   collect-souls-from-players: false
   
-  # Show enchantment level for level 1 enchants?
-  # E.g. if enabled, enchant "Gears I" would be shown as "Gears', but "Gears II" would stay the same.
+  # 是否显示 1 级的附魔等级?
+  # 例如 如果启用, 附魔 "格挡 I" 会显示为 "格挡', 但 "格挡 II" 的显示不会发生改变.
   showFirstLevel: true
-  # If WorldGuardExtraFlags is installed, should the FLY effect only work if
-  # the player is allowed to fly in that area.
+  # 如果安装了 WorldGuardExtraFlags, 是否让玩家只有被允许在某区域飞行时
+  # 飞行 FLY 效果才生效?
   use-worldguard-fly-flag: false
-  # If set to false, mobs that spawn from spawners won't
-  # drop custom drops defined in the mobs.yml file.
+  # 如果设置为 false, 从刷怪笼生成的怪物不会
+  # 掉落在文件 mobs.yml 中定义的自定义掉落物.
   custom-drops-from-spawners: false
-  # Collecting souls from mining
-  # This can be used as a "tokens" currency for prison servers
+  # 在挖矿的过程中收集灵魂
+  # 这可以作为监狱风云服务器的一种 "代币" 货币
   miningSouls:
     enabled: false
-    # Chance to gain a soul from mining
+    # 从挖矿中获得灵魂的概率
     chance: 20
   fishingSouls:
     enabled: false
-    # Chance to gain a soul from fishing
+    # 从钓鱼中获得灵魂的概率
     chance: 20
-  # Should BOW enchants only activate if bow that was shot with was extended fully?
+  # 弓 BOW 的附魔是否应该旨在弓完全伸展射出弓箭时生效?
   bow-full-power: true
-  # Should enchantment descriptions be added under enchant names in lores?
-  #   for per level descriptions use %level-description%. (will default to %description% if level description is not setup)
-  #   if level description is set, but here it's still to %description%, the placeholder won't parse!
+  # 是否应该在lore中的附魔名称下方添加附魔描述
   lore-descriptions:
     enabled: false
     display: '%group-color%* &8%description%'
-  # Should block breaking effects, such as TRENCH or TP_DROPS give McMMO EXP?
+  # 如 TRENCH 或 TP_DROPSShould 一类的破坏方块的效果是否应该给予McMMO的经验?
   give-mcmmo-with-custom-block-breaks: true
-  # Should placing of armor blocks be allowed? (IE CARVED_PUMPKIN's)
+  # 是否应该允许放置可以装备的方块? (即雕刻的南瓜)
   allow-place-of-armor-block: true
   # Should the blocks broken by effects be counted in minecraft stats
   minecraft-stats-blocks-broken-count: true

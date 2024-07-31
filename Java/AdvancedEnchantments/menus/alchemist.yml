@@ -58,7 +58,7 @@ inventory:
       slot: 22
       name: '&e&l说明'
       lore:
-      - '&7The Alchemist will Exchange...'
+      - '&7炼金术师系统将交换...'
       - ''
       - '&b&l* &f2X 附魔书'
       - '&7(需同类附魔/等级相同)'

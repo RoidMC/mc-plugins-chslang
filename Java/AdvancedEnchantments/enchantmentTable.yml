@@ -28,12 +28,11 @@ prices:
   middleLevel: 10-24 # 可填写的值: 1 - 1000
   highestLevel: 30 # 可填写的值: 1 - 1000
 
-# Custom enchants from enchantment table
+# 自定义附魔台对附魔书的支持
 enchantmentBooks:
   enabled: true
-  # Chance of getting custom enchantments when enchanting with enchantment table.
-  # This will give custom enchantment book instead of vanilla books, and can be
-  #  applied either with anvil or drag & drop onto item.
+  # 使用附魔台附魔时，有几率获得自定义附魔
+  # 这将提供自定义附魔书，而不是原版的附魔书，并且可以通过铁砧或拖拽的方式附魔到物品上
   chance: 3 # 可填入的值: 1 到 100 %
   groups:
     lowest:
